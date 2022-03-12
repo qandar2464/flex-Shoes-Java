@@ -36,9 +36,7 @@ public class PaymentMain extends JFrame {
 	private JPanel contentPane;
 	private JTextField custpayfield;
 
-	/**
-	 * Create the frame.
-	 */
+	//create frame
 	public PaymentMain(String orderid, double payment) {
 		addWindowListener(new WindowAdapter() {
 			@Override
