@@ -1,0 +1,5 @@
+Sport shoes,120
+Casual shoes,150
+Women heels,100
+Women sandals,60
+Men sandals,60
