@@ -55,7 +55,7 @@ public class CashierMain extends JFrame {
 	public static void showdata() {
 		listordermodel.setRowCount(0);
 		for (int i = 0; i < Main.getcustomer().size(); i++) {
-			// CALCULATING TOTAL ALL ITEM PRICE
+			// calculate item
 			double listpricecust = 0;
 			for (int k = 0; k < Main.getitems().size(); k++) {
 				if (String.valueOf(Main.getitems().get(k).getorderid())
@@ -138,7 +138,7 @@ public class CashierMain extends JFrame {
 		mntmNewMenuItem.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				//GET RECEIPT FROM OLDER ORDER
+				//gift receipt to user
 				String orderid = JOptionPane.showInputDialog(null, "Enter existence Order ID",
 						"Receipt", JOptionPane.INFORMATION_MESSAGE);
 				if (!(orderid == null)) {
@@ -225,7 +225,7 @@ public class CashierMain extends JFrame {
 					try {
 						orderframe = new Order(orderidmain);
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
+						// genarate catch block
 						e1.printStackTrace();
 					}
 
