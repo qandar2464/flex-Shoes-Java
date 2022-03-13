@@ -225,7 +225,7 @@ public class Order extends JFrame {
 					regularcustomer = true;
 				}
 
-				// ERROR HANDLING FOR RADIO GET ACTION COMMAND
+				// error command
 				try {
 					gender = genderselector.getSelection().getActionCommand();
 				} catch (Exception e1) {

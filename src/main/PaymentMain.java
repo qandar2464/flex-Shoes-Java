@@ -160,7 +160,7 @@ public class PaymentMain extends JFrame {
 				double custpayvalue = 0;
 				String paymenttype = null;
 				
-				//GET PAYMENT TYPE
+				//get payment method
 				try {
 					paymenttype = paymenttypeselector.getSelection().getActionCommand();
 				}catch(Exception e1) {
@@ -168,10 +168,9 @@ public class PaymentMain extends JFrame {
 					System.out.println("No Value Selected: " + e1.getMessage());
 				}
 				
-				//GET PAY VALUE
+				//get pay value
 				try {
 					custpayvalue = Double.parseDouble(custpayfield.getText());
-					//CHECK IF PAY VALUE BELOW THAN PRICE
 					if(custpayvalue < payment) {
 						insufficientbalance = true;
 					}
@@ -180,7 +179,7 @@ public class PaymentMain extends JFrame {
 					System.out.println("INVALID PAY VALUE: " + e1.getMessage());
 				}
 				
-				// ERROR MESSAGE
+				// massage error
 				if (custpayvalueerror || paymenttypeerror || insufficientbalance) {
 					String error = "Payment unable to proceed:";
 					if (custpayvalueerror) {
@@ -197,7 +196,7 @@ public class PaymentMain extends JFrame {
 					process = true;
 				}
 				
-				//PAYMENT PROCESS DATA
+				//payment prosess
 				if(process == true) {
 					Main.getpayment().add(new PaymentClass(orderid, paymenttype, payment, custpayvalue));
 					ReceiptCustomer receiptframe = new ReceiptCustomer(orderid);

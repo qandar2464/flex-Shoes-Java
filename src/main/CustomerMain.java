@@ -1,7 +1,7 @@
 package main;
 
 public class CustomerMain extends OrderItem{
-	//CUSTOMER DATA
+	// data customer
     private String name;
     private String phoneno;
     private String address;
@@ -26,7 +26,6 @@ public class CustomerMain extends OrderItem{
         this.regularcustomer = regularcustomer;
     }
     
-    //ACCESSOR
     public String getname(){
         return name;
     }

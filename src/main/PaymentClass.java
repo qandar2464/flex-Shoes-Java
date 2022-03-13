@@ -1,9 +1,9 @@
 package main;
-
+//payment method,total price,and price that customer pay here 
 public class PaymentClass extends OrderItem{
-	private String paymenttype;  //TYPE PAYMENT
-	private double totalprice; //ALL PRICE TOTAL
-	private double custpay;  //HOW MUCH CUSTOMER PAY
+	private String paymenttype;  
+	private double totalprice; 
+	private double custpay;  
 	
 	public PaymentClass(String orderid, String paymenttype, double totalprice, double custpay) {
 		this.orderid = orderid;

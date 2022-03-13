@@ -12,14 +12,9 @@ import java.awt.Color;
 import javax.swing.JProgressBar;
 
 public class Welcome extends JFrame {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create the application.
-	 */
 	JProgressBar progressBar = new JProgressBar();
 	JLabel lblNewLabel_3 = new JLabel("Welcome! Starting up...");
 	public Welcome() {

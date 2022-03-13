@@ -1,7 +1,7 @@
 package main;
 
 public class Items extends OrderItem{
-	//ITEMS DATA
+	//item information
 	private int itemnumber;
     private String itemname;
     private int quantity;
@@ -23,7 +23,6 @@ public class Items extends OrderItem{
         this.totalitems = totalitems;
     }
     
-    //ACCESSOR
     public int getitemnumber() {
     	return itemnumber;
     }

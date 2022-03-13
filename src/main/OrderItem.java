@@ -1,7 +1,7 @@
 package main;
 
 public class OrderItem {
-	//LINKED BY ORDER ID
+	//this are link with order
     protected String orderid;
     private String date;
     private String time;

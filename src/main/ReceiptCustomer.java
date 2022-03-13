@@ -25,9 +25,7 @@ public class ReceiptCustomer extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public ReceiptCustomer(String orderid) {
 		//@SuppressWarnings("unlikely-arg-type")
 		List<CustomerMain> customerdata = Main.getcustomer().stream().filter(custdata -> custdata.getorderid().equals(orderid)).collect(Collectors.toList());

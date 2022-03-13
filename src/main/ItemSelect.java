@@ -37,9 +37,7 @@ public class ItemSelect extends JFrame {
 	
 	DecimalFormat priceformatter = new DecimalFormat("#0.00");
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
@@ -49,9 +47,7 @@ public class ItemSelect extends JFrame {
 	JLabel totalpricedisplay;
 	
 
-	/**
-	 * Create the frame.
-	 */
+	
 
 	public ItemSelect(final String orderid) throws IOException {
 		this.orderid = orderid;
@@ -71,7 +67,7 @@ public class ItemSelect extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane();
 
-		// READ ITEM FROM FILE
+		// read file from item
 		BufferedReader itemlistinput = null;
 		List<String> itemlist = new ArrayList<String>();
 		List<String> itemlistname = new ArrayList<String>();
@@ -89,11 +85,7 @@ public class ItemSelect extends JFrame {
 			}
 		}
 		catch (FileNotFoundException e) {
-			// DISABLE WHEN IN WINDOWBUILDER EDITING
-			// JOptionPane.showMessageDialog(null, "Error: File bakery.txt not found. Go to
-			// jar file location and create bakery.txt");
 			System.err.println("Error, file didn't exist.");
-			// System.exit(0);
 		} finally {
 			itemlistinput.close();
 		}
@@ -113,7 +105,7 @@ public class ItemSelect extends JFrame {
 			int lastitemnumber = 1;
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//ADD ITEMS TO LIST ORDERS FOR CUSTOMER
+				//add item to customer order
 				int selecteditem = 0;
 				int quantityno;
 				double totalitemsprice = 0;
@@ -128,7 +120,7 @@ public class ItemSelect extends JFrame {
 							lastitemnumber = 1;
 						}
 						
-						//CALCULATE PRICE FOR SELECTED ITEM AND QUANTITY
+						//calculate price with quantity
 						quantityno = (Integer) quantity.getValue();
 						totalitemsprice = priceperitemArray[selecteditem - 1] * quantityno;
 						Main.getitems().add(new Items(orderid, lastitemnumber, String.valueOf(itemlistnameArray[selecteditem - 1]), (Integer)quantity.getValue(), totalitemsprice));
@@ -168,7 +160,7 @@ public class ItemSelect extends JFrame {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//DELETE ITEMS HERE
+				//if user want delete item here
 				int deletenumber;
 				try {
 					deletenumber = Integer.parseInt(deletenumberfield.getText());
