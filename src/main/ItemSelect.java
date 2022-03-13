@@ -203,9 +203,9 @@ public class ItemSelect extends JFrame {
 					.addGap(90))
 				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(298)
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(363, Short.MAX_VALUE))
+					.addGap(172)
+					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 401, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(199, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -231,9 +231,9 @@ public class ItemSelect extends JFrame {
 							.addComponent(totalpricedisplay)))
 					.addGap(27)
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-					.addGap(1)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnNewButton_1)
-					.addContainerGap())
+					.addGap(6))
 		);
 
 		table = new JTable();

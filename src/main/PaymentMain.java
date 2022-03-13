@@ -95,7 +95,7 @@ public class PaymentMain extends JFrame {
 		JPanel panel_2_1 = new JPanel();
 		panel_2_1.setBackground(new Color(240, 243, 189));
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Enter Amount (RM)");
+		JLabel lblNewLabel_1_1 = new JLabel("Amount pay (RM)");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		custpayfield = new JTextField();
