@@ -156,7 +156,7 @@ public class ItemSelect extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("Item Number");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton btnNewButton_2 = new JButton("Cancel");
+		JButton btnNewButton_2 = new JButton("Delete");
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -201,11 +201,14 @@ public class ItemSelect extends JFrame {
 							.addComponent(btnNewButton_2))
 						.addComponent(totalpricedisplay))
 					.addGap(90))
-				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(172)
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 401, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(199, Short.MAX_VALUE))
+					.addGap(164)
+					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 421, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(187, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(49)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 654, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(69, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -229,11 +232,11 @@ public class ItemSelect extends JFrame {
 								.addComponent(btnNewButton_2))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(totalpricedisplay)))
-					.addGap(27)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_1)
-					.addGap(6))
+					.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+					.addGap(26))
 		);
 
 		table = new JTable();

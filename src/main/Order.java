@@ -133,9 +133,6 @@ public class Order extends JFrame {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(0, 153, 153));
 
-		JLabel lblNewLabel_1 = new JLabel("Customer Name");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-
 		JLabel lblNewLabel_3 = new JLabel("Phone Number");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
@@ -150,22 +147,41 @@ public class Order extends JFrame {
 
 		JLabel lblNewLabel_6 = new JLabel("Gender");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+				JLabel lblNewLabel_1 = new JLabel("Customer Name");
+				lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup().addContainerGap()
-						.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING).addComponent(lblNewLabel_1)
-								.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING, false)
-										.addComponent(lblNewLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(lblNewLabel_3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
-												GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addComponent(lblNewLabel_5).addComponent(lblNewLabel_4).addComponent(lblNewLabel_6))
-						.addContainerGap(64, Short.MAX_VALUE)));
-		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup().addGap(45).addComponent(lblNewLabel_1).addGap(18)
-						.addComponent(lblNewLabel_3).addGap(18).addComponent(lblNewLabel).addGap(62)
-						.addComponent(lblNewLabel_6).addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-						.addComponent(lblNewLabel_4).addGap(37).addComponent(lblNewLabel_5).addGap(57)));
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(lblNewLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(lblNewLabel_3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(lblNewLabel_5)
+						.addComponent(lblNewLabel_4)
+						.addComponent(lblNewLabel_6)
+						.addComponent(lblNewLabel_1))
+					.addContainerGap(98, Short.MAX_VALUE))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(45)
+					.addComponent(lblNewLabel_1)
+					.addGap(18)
+					.addComponent(lblNewLabel_3)
+					.addGap(18)
+					.addComponent(lblNewLabel)
+					.addGap(62)
+					.addComponent(lblNewLabel_6)
+					.addPreferredGap(ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+					.addComponent(lblNewLabel_4)
+					.addGap(37)
+					.addComponent(lblNewLabel_5)
+					.addGap(57))
+		);
 		panel_2.setLayout(gl_panel_2);
 
 		JTextField custnamefield = new JTextField();
@@ -333,16 +349,15 @@ public class Order extends JFrame {
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(42)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+					.addGap(135)
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+					.addGap(37)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(18)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
-								.addComponent(custnamefield, GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
-								.addComponent(phonenofield, GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
+								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+								.addComponent(custnamefield, GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+								.addComponent(phonenofield, GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addComponent(btnNewButton_1)
 									.addGap(131)
@@ -352,15 +367,16 @@ public class Order extends JFrame {
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addComponent(malevalueradio)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(femalevalueradio))
-								.addComponent(regularcustomercheck)))
+									.addComponent(femalevalueradio)))
+							.addContainerGap())
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
+							.addComponent(regularcustomercheck)
+							.addPreferredGap(ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE)
+							.addGap(60))))
 		);
 		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
+			gl_panel_1.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addGap(42)
 					.addComponent(custnamefield, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -368,7 +384,7 @@ public class Order extends JFrame {
 					.addComponent(phonenofield, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING, false)
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGap(18)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
@@ -377,18 +393,19 @@ public class Order extends JFrame {
 							.addGap(29)
 							.addComponent(btnNewButton_1)
 							.addGap(31)
-							.addComponent(regularcustomercheck))
+							.addComponent(regularcustomercheck)
+							.addGap(57))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGap(52)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 								.addComponent(titletotalprice)
 								.addComponent(totalpricedisplay))
-							.addGap(81)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+							.addGap(25))))
+				.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
+					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 
 		scrollPane.setViewportView(addressfield);
@@ -398,9 +415,9 @@ public class Order extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(42)
+					.addGap(27)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 855, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(112, Short.MAX_VALUE))
+					.addContainerGap(127, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
