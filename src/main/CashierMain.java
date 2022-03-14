@@ -33,6 +33,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class CashierMain extends JFrame {
 
@@ -198,90 +199,10 @@ public class CashierMain extends JFrame {
 		contentPane.setBackground(new Color(255, 204, 153));
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
-
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-
-		JLabel lblNewLabel = new JLabel("Order");
-		lblNewLabel.setIcon(new ImageIcon(CashierMain.class.getResource("/main/logo/ordericon.png")));
-		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 24));
-
-		btnNewButton = new JButton("Order");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setIcon(new ImageIcon(CashierMain.class.getResource("/main/logo/add.png")));
-		btnNewButton.setFocusable(false);
-		btnNewButton.setBackground(new Color(255, 0, 51));
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(btnNewButton.isEnabled()) {
-					String orderid = JOptionPane.showInputDialog(null, "To create new order, enter new order ID",
-							"Enter new order ID", JOptionPane.INFORMATION_MESSAGE);
-					orderidmain = orderid;
-					try {
-						orderframe = new Order(orderidmain);
-					} catch (IOException e1) {
-						// genarate catch block
-						e1.printStackTrace();
-					}
-
-					if (!(orderid == null)) {
-						if (!orderid.isEmpty()) {
-							boolean duplicateorderid = containsOrderId(orderid);
-							if (duplicateorderid) {
-								JOptionPane.showMessageDialog(null,
-										"The Order ID you entered exists. Enter another new Order ID", "Duplicate Order ID",
-										JOptionPane.ERROR_MESSAGE);
-							} else {
-								Date date = new Date();
-								
-								Main.getorders().add(
-										new OrderItem(orderid, newdateformat.format(date), newtimeformat.format(date)));
-								orderframe.setVisible(true);
-								btnNewButton.setEnabled(false);
-							}
-						} else {
-							JOptionPane.showMessageDialog(null, "Please enter Order ID", "Empty Order ID field",
-									JOptionPane.ERROR_MESSAGE);
-						}
-					}
-				}
-			}
-		});
-		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(367)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 230, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(382, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(66)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 834, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(79, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
-					.addGap(30)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(19, Short.MAX_VALUE))
-		);
-
-		orderlist = new JTable();
-		scrollPane.setViewportView(orderlist);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(CashierMain.class.getResource("/main/logo/background.png")));
+		lblNewLabel_1.setBounds(0, 0, 979, 452);
 		listordermodel = new DefaultTableModel(new Object[][] {},
 				new String[] { "Name", "Phone No", "Order ID", "Total Price" }) {
 			/**
@@ -293,9 +214,75 @@ public class CashierMain extends JFrame {
 				return false;
 			}
 		};
-		orderlist.setModel(listordermodel);
-		orderlist.getColumnModel().getColumn(0).setPreferredWidth(195);
-		contentPane.setLayout(gl_contentPane);
+		contentPane.setLayout(null);
+		
+				JScrollPane scrollPane = new JScrollPane();
+				scrollPane.setBounds(66, 113, 834, 258);
+				scrollPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+				
+						orderlist = new JTable();
+						scrollPane.setViewportView(orderlist);
+						orderlist.setModel(listordermodel);
+						orderlist.getColumnModel().getColumn(0).setPreferredWidth(195);
+						
+								btnNewButton = new JButton("Order");
+								btnNewButton.setBounds(714, 382, 186, 51);
+								btnNewButton.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent e) {
+									}
+								});
+								btnNewButton.setIcon(new ImageIcon(CashierMain.class.getResource("/main/logo/add.png")));
+								btnNewButton.setFocusable(false);
+								btnNewButton.setBackground(new Color(255, 0, 51));
+								btnNewButton.addMouseListener(new MouseAdapter() {
+									@Override
+									public void mouseClicked(MouseEvent e) {
+										if(btnNewButton.isEnabled()) {
+											String orderid = JOptionPane.showInputDialog(null, "To create new order, enter new order ID",
+													"Enter new order ID", JOptionPane.INFORMATION_MESSAGE);
+											orderidmain = orderid;
+											try {
+												orderframe = new Order(orderidmain);
+											} catch (IOException e1) {
+												// genarate catch block
+												e1.printStackTrace();
+											}
+
+											if (!(orderid == null)) {
+												if (!orderid.isEmpty()) {
+													boolean duplicateorderid = containsOrderId(orderid);
+													if (duplicateorderid) {
+														JOptionPane.showMessageDialog(null,
+																"The Order ID you entered exists. Enter another new Order ID", "Duplicate Order ID",
+																JOptionPane.ERROR_MESSAGE);
+													} else {
+														Date date = new Date();
+														
+														Main.getorders().add(
+																new OrderItem(orderid, newdateformat.format(date), newtimeformat.format(date)));
+														orderframe.setVisible(true);
+														btnNewButton.setEnabled(false);
+													}
+												} else {
+													JOptionPane.showMessageDialog(null, "Please enter Order ID", "Empty Order ID field",
+															JOptionPane.ERROR_MESSAGE);
+												}
+											}
+										}
+									}
+								});
+								
+										JLabel lblNewLabel = new JLabel("Order");
+										lblNewLabel.setBounds(373, 11, 230, 72);
+										lblNewLabel.setIcon(new ImageIcon(CashierMain.class.getResource("/main/logo/ordericon.png")));
+										lblNewLabel.setForeground(Color.BLACK);
+										lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 27));
+										contentPane.add(lblNewLabel);
+								btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+								btnNewButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
+								contentPane.add(btnNewButton);
+						contentPane.add(scrollPane);
+		contentPane.add(lblNewLabel_1);
 		setLocationRelativeTo(null);
 		setIconImage(new ImageIcon(this.getClass().getResource("/main/logo/logo.png")).getImage());
 	}

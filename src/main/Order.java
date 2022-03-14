@@ -127,303 +127,296 @@ public class Order extends JFrame {
 		setLocationRelativeTo(null);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 204, 153));
-
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(204, 204, 204));
-
-		JTextField custnamefield = new JTextField();
-		custnamefield.setColumns(10);
-
-		JTextField phonenofield = new JTextField();
-		phonenofield.setColumns(10);
-
-		JTextArea addressfield = new JTextArea();
-		addressfield.setFont(new Font("Tahoma", Font.PLAIN, 11));
-
-		JCheckBox regularcustomercheck = new JCheckBox("Yes");
-		regularcustomercheck.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				if (regularcustomercheck.isSelected()) {
-					regularcustomer = true;
-				} else {
-					regularcustomer = false;
-				}
-
-				if (regularcustomer == true) {
-					titletotalprice.setText("Total Price with discount "
-							+ discountnumber.format((Main.getdiscountvalue() * 100)) + "%");
-					double totalwithdiscount = listpricecust - (listpricecust * Main.getdiscountvalue());
-					totalpricedisplay.setText("RM " + priceformatter.format(totalwithdiscount));
-					finalprice = totalwithdiscount;
-				} else {
-					titletotalprice.setText("Total Price");
-					totalpricedisplay.setText("RM " + priceformatter.format(listpricecust));
-					finalprice = listpricecust;
-				}
-			}
-		});
-
-		JScrollPane scrollPane = new JScrollPane();
-
-		JRadioButton malevalueradio = new JRadioButton("Male");
-		JRadioButton femalevalueradio = new JRadioButton("Female");
-		malevalueradio.setActionCommand("Male");
-		femalevalueradio.setActionCommand("Female");
+		panel.setForeground(Color.WHITE);
+		panel.setBounds(0, 0, 1009, 72);
+		panel.setBackground(Color.WHITE);
 
 		ButtonGroup genderselector = new ButtonGroup();
-		genderselector.add(malevalueradio);
-		genderselector.add(femalevalueradio);
-
-		JButton btnNewButton = new JButton("Pay");
-		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 17));
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String customername = custnamefield.getText();
-				String phoneno = phonenofield.getText();
-				String address = addressfield.getText();
-				String gender = "";
-				boolean regularcustomer = false;
-				if (regularcustomercheck.isSelected()) {
-					regularcustomer = true;
-				}
-
-				// error command
-				try {
-					gender = genderselector.getSelection().getActionCommand();
-				} catch (Exception e1) {
-					System.out.println(e1.getMessage());
-				}
-
-				// proses 
-				boolean process = false;
-
-				// if have any erorr
-				boolean customernameerror = false;
-				boolean phonenoerror = false;
-				boolean addresserror = false;
-				boolean gendererror = false;
-				boolean quantityerror = false;
-
-				// check name
-				if (customername.isEmpty()) {
-					customernameerror = true;
-				}
-
-				// phone number
-				if (phoneno.isEmpty()) {
-					phonenoerror = true;
-				}
-
-				// addres
-				if (address.isEmpty()) {
-					addresserror = true;
-				}
-
-				// gender
-				if (gender.isEmpty()) {
-					gendererror = true;
-				}
-
-				// added
-				int quantitycount = 0;
-				for (int i = 0; i < Main.getitems().size(); i++) {
-					if (String.valueOf(Main.getitems().get(i).getorderid()).equals(orderid)) {
-						quantitycount = quantitycount + Main.getitems().get(i).getquantity();
-					}
-				}
-
-				// quantity item
-				if (quantitycount == 0) {
-					quantityerror = true;
-				}
-
-				// error massage
-				if (customernameerror || phonenoerror || addresserror || gendererror || quantityerror) {
-					String error = "Check your required field:";
-					if (customernameerror) {
-						error += "\nName is empty";
-					}
-					if (phonenoerror) {
-						error += "\nPhone number is empty";
-					}
-					if (addresserror) {
-						error += "\nAddress is empty";
-					}
-					if (gendererror) {
-						error += "\nGender is empty";
-					}
-					if (quantityerror) {
-						error += "\nItems is empty";
-					}
-					JOptionPane.showMessageDialog(null, error, "Error. ID: " + orderid, JOptionPane.ERROR_MESSAGE);
-				} else {
-					process = true;
-				}
-
-				// if all complete data save
-				if (process == true) {
-					boolean duplicateorderid = containsOrderId(orderid);
-					if (duplicateorderid) {
-					} else {						
-						Main.getcustomer().add(new CustomerMain(orderid, customername, phoneno, address, gender, regularcustomer));
-					}
-					if(paymentframe == null) {						
-						paymentframe = new PaymentMain(orderid, finalprice);
-						paymentframe.setVisible(true);
-					}else {
-						paymentframe.setVisible(true);
-					}
-				}
-			}
-		});
-
-		JButton btnNewButton_1 = new JButton("Show Item Selector");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				itemselector.setVisible(true);
-			}
-		});
-
-		titletotalprice = new JLabel("Total Price:");
-		titletotalprice.setFont(new Font("SansSerif", Font.BOLD, 16));
-		titletotalprice.setForeground(Color.BLACK);
-
-		totalpricedisplay = new JLabel("RM 0.00");
-		totalpricedisplay.setFont(new Font("SansSerif", Font.BOLD, 19));
+		contentPane.setLayout(null);
 		
-				JLabel lblNewLabel_1 = new JLabel("Customer Name");
-				lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-				JLabel lblNewLabel_3 = new JLabel("Phone Number");
-				lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-				JLabel lblNewLabel = new JLabel("Address");
-				lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-				JLabel lblNewLabel_6 = new JLabel("Gender");
-				lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-				JLabel lblNewLabel_4 = new JLabel("Items");
-				lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-				JLabel lblNewLabel_5 = new JLabel("Regular Customer");
-				lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
+				JPanel panel_1 = new JPanel();
+				panel_1.setBounds(146, 90, 750, 408);
+				panel_1.setBackground(new Color(204, 204, 204));
+				
+						JTextField custnamefield = new JTextField();
+						custnamefield.setColumns(10);
+						
+								JTextField phonenofield = new JTextField();
+								phonenofield.setColumns(10);
+								
+										JTextArea addressfield = new JTextArea();
+										addressfield.setFont(new Font("Tahoma", Font.PLAIN, 11));
+										
+												JCheckBox regularcustomercheck = new JCheckBox("Yes");
+												regularcustomercheck.addItemListener(new ItemListener() {
+													public void itemStateChanged(ItemEvent e) {
+														if (regularcustomercheck.isSelected()) {
+															regularcustomer = true;
+														} else {
+															regularcustomer = false;
+														}
 
-		scrollPane.setRowHeaderView(addressfield);
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(139, Short.MAX_VALUE)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 750, GroupLayout.PREFERRED_SIZE)
-					.addGap(120))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 408, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(52, Short.MAX_VALUE))
-		);
-		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(69)
-							.addComponent(lblNewLabel_1))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(69)
-							.addComponent(custnamefield, GroupLayout.PREFERRED_SIZE, 614, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(69)
-							.addComponent(lblNewLabel_3))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(69)
-							.addComponent(phonenofield, GroupLayout.PREFERRED_SIZE, 623, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(205)
-							.addComponent(titletotalprice)
-							.addGap(30)
-							.addComponent(totalpricedisplay))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(256)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(69)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 623, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel)))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addGap(69)
-									.addComponent(lblNewLabel_6)
-									.addGap(183)
-									.addComponent(lblNewLabel_4))
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addGap(79)
-									.addComponent(malevalueradio)
-									.addGap(12)
-									.addComponent(femalevalueradio)
-									.addGap(84)
-									.addComponent(btnNewButton_1)))
-							.addGap(74)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(regularcustomercheck)
-								.addComponent(lblNewLabel_5))))
-					.addGap(58))
-		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(25)
-					.addComponent(lblNewLabel_1)
-					.addGap(8)
-					.addComponent(custnamefield, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(lblNewLabel_3)
-					.addGap(11)
-					.addComponent(phonenofield, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(lblNewLabel)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_6)
-						.addComponent(lblNewLabel_4)
-						.addComponent(lblNewLabel_5))
-					.addGap(7)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(malevalueradio)
-								.addComponent(femalevalueradio)
-								.addComponent(btnNewButton_1))
-							.addGap(38)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-								.addComponent(titletotalprice)
-								.addComponent(totalpricedisplay))
-							.addGap(11)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
-						.addComponent(regularcustomercheck)))
-		);
-		panel_1.setLayout(gl_panel_1);
+														if (regularcustomer == true) {
+															titletotalprice.setText("Total Price with discount "
+																	+ discountnumber.format((Main.getdiscountvalue() * 100)) + "%");
+															double totalwithdiscount = listpricecust - (listpricecust * Main.getdiscountvalue());
+															totalpricedisplay.setText("RM " + priceformatter.format(totalwithdiscount));
+															finalprice = totalwithdiscount;
+														} else {
+															titletotalprice.setText("Total Price");
+															totalpricedisplay.setText("RM " + priceformatter.format(listpricecust));
+															finalprice = listpricecust;
+														}
+													}
+												});
+												
+														JScrollPane scrollPane = new JScrollPane();
+														
+																JRadioButton malevalueradio = new JRadioButton("Male");
+																JRadioButton femalevalueradio = new JRadioButton("Female");
+																malevalueradio.setActionCommand("Male");
+																femalevalueradio.setActionCommand("Female");
+																genderselector.add(malevalueradio);
+																genderselector.add(femalevalueradio);
+																
+																		JButton btnNewButton = new JButton("Pay");
+																		btnNewButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
+																		btnNewButton.addMouseListener(new MouseAdapter() {
+																			@Override
+																			public void mouseClicked(MouseEvent e) {
+																				String customername = custnamefield.getText();
+																				String phoneno = phonenofield.getText();
+																				String address = addressfield.getText();
+																				String gender = "";
+																				boolean regularcustomer = false;
+																				if (regularcustomercheck.isSelected()) {
+																					regularcustomer = true;
+																				}
+
+																				// error command
+																				try {
+																					gender = genderselector.getSelection().getActionCommand();
+																				} catch (Exception e1) {
+																					System.out.println(e1.getMessage());
+																				}
+
+																				// proses 
+																				boolean process = false;
+
+																				// if have any erorr
+																				boolean customernameerror = false;
+																				boolean phonenoerror = false;
+																				boolean addresserror = false;
+																				boolean gendererror = false;
+																				boolean quantityerror = false;
+
+																				// check name
+																				if (customername.isEmpty()) {
+																					customernameerror = true;
+																				}
+
+																				// phone number
+																				if (phoneno.isEmpty()) {
+																					phonenoerror = true;
+																				}
+
+																				// addres
+																				if (address.isEmpty()) {
+																					addresserror = true;
+																				}
+
+																				// gender
+																				if (gender.isEmpty()) {
+																					gendererror = true;
+																				}
+
+																				// added
+																				int quantitycount = 0;
+																				for (int i = 0; i < Main.getitems().size(); i++) {
+																					if (String.valueOf(Main.getitems().get(i).getorderid()).equals(orderid)) {
+																						quantitycount = quantitycount + Main.getitems().get(i).getquantity();
+																					}
+																				}
+
+																				// quantity item
+																				if (quantitycount == 0) {
+																					quantityerror = true;
+																				}
+
+																				// error massage
+																				if (customernameerror || phonenoerror || addresserror || gendererror || quantityerror) {
+																					String error = "Check your required field:";
+																					if (customernameerror) {
+																						error += "\nName is empty";
+																					}
+																					if (phonenoerror) {
+																						error += "\nPhone number is empty";
+																					}
+																					if (addresserror) {
+																						error += "\nAddress is empty";
+																					}
+																					if (gendererror) {
+																						error += "\nGender is empty";
+																					}
+																					if (quantityerror) {
+																						error += "\nItems is empty";
+																					}
+																					JOptionPane.showMessageDialog(null, error, "Error. ID: " + orderid, JOptionPane.ERROR_MESSAGE);
+																				} else {
+																					process = true;
+																				}
+
+																				// if all complete data save
+																				if (process == true) {
+																					boolean duplicateorderid = containsOrderId(orderid);
+																					if (duplicateorderid) {
+																					} else {						
+																						Main.getcustomer().add(new CustomerMain(orderid, customername, phoneno, address, gender, regularcustomer));
+																					}
+																					if(paymentframe == null) {						
+																						paymentframe = new PaymentMain(orderid, finalprice);
+																						paymentframe.setVisible(true);
+																					}else {
+																						paymentframe.setVisible(true);
+																					}
+																				}
+																			}
+																		});
+																		
+																				JButton btnNewButton_1 = new JButton("Show Item Selector");
+																				btnNewButton_1.addActionListener(new ActionListener() {
+																					public void actionPerformed(ActionEvent e) {
+																					}
+																				});
+																				btnNewButton_1.addMouseListener(new MouseAdapter() {
+																					public void mouseClicked(MouseEvent e) {
+																						itemselector.setVisible(true);
+																					}
+																				});
+																				
+																						titletotalprice = new JLabel("Total Price:");
+																						titletotalprice.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
+																						titletotalprice.setForeground(new Color(0, 0, 0));
+																						
+																								totalpricedisplay = new JLabel("RM 0.00");
+																								totalpricedisplay.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 19));
+																								
+																										JLabel lblNewLabel_1 = new JLabel("Customer Name");
+																										lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 14));
+																										
+																												JLabel lblNewLabel_3 = new JLabel("Phone Number");
+																												lblNewLabel_3.setFont(new Font("Tahoma", Font.ITALIC, 14));
+																												
+																														JLabel lblNewLabel = new JLabel("Address");
+																														lblNewLabel.setFont(new Font("Tahoma", Font.ITALIC, 14));
+																														
+																																JLabel lblNewLabel_6 = new JLabel("Gender");
+																																lblNewLabel_6.setFont(new Font("Tahoma", Font.ITALIC, 14));
+																																
+																																		JLabel lblNewLabel_4 = new JLabel("Items");
+																																		lblNewLabel_4.setFont(new Font("Tahoma", Font.ITALIC, 14));
+																																		
+																																				JLabel lblNewLabel_5 = new JLabel("Regular Customer");
+																																				lblNewLabel_5.setFont(new Font("Tahoma", Font.ITALIC, 14));
+																																				
+																																						scrollPane.setRowHeaderView(addressfield);
+																																						GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+																																						gl_panel_1.setHorizontalGroup(
+																																							gl_panel_1.createParallelGroup(Alignment.LEADING)
+																																								.addGroup(gl_panel_1.createSequentialGroup()
+																																									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+																																										.addGroup(gl_panel_1.createSequentialGroup()
+																																											.addGap(69)
+																																											.addComponent(lblNewLabel_1))
+																																										.addGroup(gl_panel_1.createSequentialGroup()
+																																											.addGap(69)
+																																											.addComponent(custnamefield, GroupLayout.PREFERRED_SIZE, 614, GroupLayout.PREFERRED_SIZE))
+																																										.addGroup(gl_panel_1.createSequentialGroup()
+																																											.addGap(69)
+																																											.addComponent(lblNewLabel_3))
+																																										.addGroup(gl_panel_1.createSequentialGroup()
+																																											.addGap(69)
+																																											.addComponent(phonenofield, GroupLayout.PREFERRED_SIZE, 623, GroupLayout.PREFERRED_SIZE))
+																																										.addGroup(gl_panel_1.createSequentialGroup()
+																																											.addGap(69)
+																																											.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+																																												.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 623, GroupLayout.PREFERRED_SIZE)
+																																												.addComponent(lblNewLabel)))
+																																										.addGroup(gl_panel_1.createSequentialGroup()
+																																											.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
+																																												.addGroup(gl_panel_1.createSequentialGroup()
+																																													.addGap(69)
+																																													.addComponent(lblNewLabel_6, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+																																												.addGroup(gl_panel_1.createSequentialGroup()
+																																													.addGap(79)
+																																													.addComponent(malevalueradio)))
+																																											.addGap(12)
+																																											.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+																																												.addGroup(gl_panel_1.createSequentialGroup()
+																																													.addComponent(femalevalueradio)
+																																													.addGap(84)
+																																													.addComponent(btnNewButton_1)
+																																													.addGap(74))
+																																												.addGroup(gl_panel_1.createSequentialGroup()
+																																													.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+																																													.addGap(144)))
+																																											.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+																																												.addComponent(regularcustomercheck)
+																																												.addComponent(lblNewLabel_5, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
+																																										.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+																																											.addGroup(gl_panel_1.createSequentialGroup()
+																																												.addGap(216)
+																																												.addComponent(titletotalprice)
+																																												.addGap(37)
+																																												.addComponent(totalpricedisplay, GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE))
+																																											.addGroup(gl_panel_1.createSequentialGroup()
+																																												.addGap(256)
+																																												.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE))))
+																																									.addGap(58))
+																																						);
+																																						gl_panel_1.setVerticalGroup(
+																																							gl_panel_1.createParallelGroup(Alignment.LEADING)
+																																								.addGroup(gl_panel_1.createSequentialGroup()
+																																									.addGap(25)
+																																									.addComponent(lblNewLabel_1)
+																																									.addGap(8)
+																																									.addComponent(custnamefield, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																																									.addGap(18)
+																																									.addComponent(lblNewLabel_3)
+																																									.addGap(11)
+																																									.addComponent(phonenofield, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																																									.addGap(10)
+																																									.addComponent(lblNewLabel)
+																																									.addPreferredGap(ComponentPlacement.RELATED)
+																																									.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+																																									.addGap(18)
+																																									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+																																										.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+																																											.addComponent(lblNewLabel_5)
+																																											.addComponent(lblNewLabel_4))
+																																										.addComponent(lblNewLabel_6))
+																																									.addGap(7)
+																																									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+																																										.addGroup(gl_panel_1.createSequentialGroup()
+																																											.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+																																												.addComponent(malevalueradio)
+																																												.addComponent(femalevalueradio)
+																																												.addComponent(btnNewButton_1))
+																																											.addGap(38)
+																																											.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+																																												.addComponent(totalpricedisplay)
+																																												.addComponent(titletotalprice))
+																																											.addGap(11)
+																																											.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
+																																										.addComponent(regularcustomercheck)))
+																																						);
+																																						panel_1.setLayout(gl_panel_1);
+																																						contentPane.add(panel_1);
 
 		lblNewLabel_2 = new JLabel("New order for ID: " + orderid);
 		lblNewLabel_2.setIcon(new ImageIcon(Order.class.getResource("/main/logo/contract.png")));
 		lblNewLabel_2.setForeground(new Color(0, 0, 0));
-		lblNewLabel_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -440,6 +433,11 @@ public class Order extends JFrame {
 					.addContainerGap(20, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
-		contentPane.setLayout(gl_contentPane);
+		contentPane.add(panel);
+		
+		JLabel lblNewLabel_7 = new JLabel("New label");
+		lblNewLabel_7.setIcon(new ImageIcon(Order.class.getResource("/main/logo/background.png")));
+		lblNewLabel_7.setBounds(0, 65, 1009, 485);
+		contentPane.add(lblNewLabel_7);
 	}
 }

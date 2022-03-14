@@ -31,50 +31,33 @@ public class Welcome extends JFrame {
 		panel_1.setBounds(0, 0, 766, 387);
 		getContentPane().add(panel_1);
 
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(this.getClass().getResource("/main/logo/logo.png")));
-
-		JLabel lblNewLabel_2 = new JLabel(Main.getappname());
-		lblNewLabel_2.setBackground(Color.WHITE);
-		lblNewLabel_2.setForeground(Color.DARK_GRAY);
-		lblNewLabel_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 58));
-
 		JLabel lblNewLabel = new JLabel("By: " + Main.getcontributor());
+		lblNewLabel.setBounds(10, 11, 509, 27);
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setFont(new Font("Calibri Light", Font.PLAIN, 17));
 		
+		JLabel lblNewLabel_4 = new JLabel("New label");
+		lblNewLabel_4.setIcon(new ImageIcon(Welcome.class.getResource("/main/logo/background.png")));
+		lblNewLabel_4.setBounds(0, 0, 766, 387);
+		panel_1.setLayout(null);
+				
+						JLabel lblNewLabel_2 = new JLabel(Main.getappname());
+						lblNewLabel_2.setBounds(272, 69, 518, 114);
+						lblNewLabel_2.setBackground(Color.WHITE);
+						lblNewLabel_2.setForeground(Color.DARK_GRAY);
+						lblNewLabel_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 58));
+						panel_1.add(lblNewLabel_2);
+		
+				JLabel lblNewLabel_1 = new JLabel("");
+				lblNewLabel_1.setBounds(172, 69, 80, 89);
+				lblNewLabel_1.setIcon(new ImageIcon(this.getClass().getResource("/main/logo/logo.png")));
+				panel_1.add(lblNewLabel_1);
+		lblNewLabel_3.setBounds(196, 194, 194, 66);
+		
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_3.setForeground(Color.BLACK);
-		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(18)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 509, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(158)
-					.addComponent(lblNewLabel_1)
-					.addGap(10)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 518, GroupLayout.PREFERRED_SIZE)))
-		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(21)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-					.addGap(63)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(13)
-							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)))
-					.addGap(103))
-		);
-		panel_1.setLayout(gl_panel_1);
+		panel_1.add(lblNewLabel_3);
+		panel_1.add(lblNewLabel);
+		panel_1.add(lblNewLabel_4);
 	}
 }

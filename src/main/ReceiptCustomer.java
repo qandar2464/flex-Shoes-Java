@@ -44,43 +44,73 @@ public class ReceiptCustomer extends JFrame {
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 942, 68);
-		panel.setBackground(new Color(255, 204, 153));
-		
-		JLabel lblNewLabel_4 = new JLabel("Customer Details");
-		lblNewLabel_4.setBounds(183, 79, 140, 24);
-		lblNewLabel_4.setBackground(Color.WHITE);
-		lblNewLabel_4.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblNewLabel_4.setForeground(Color.BLACK);
-		
-		JLabel lblNewLabel_4_2 = new JLabel("Order Details");
-		lblNewLabel_4_2.setBounds(680, 79, 137, 24);
-		lblNewLabel_4_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_4_2.setForeground(Color.BLACK);
-		lblNewLabel_4_2.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		lblNewLabel_4_2.setBackground(Color.WHITE);
+		panel.setBackground(Color.WHITE);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(90, 314, 757, 225);
+		scrollPane.setBounds(93, 326, 757, 225);
+		
+		String addressline = "<html>" + customerdata.get(0).getaddress().replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>";
+		
+		String regularcuststate = "No";
+		if(customerdata.get(0).getregularcustomer()) {
+			regularcuststate = "Yes";
+		}
+		
+		table = new JTable();
+		DefaultTableModel listitemmodel = new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+					"Item Number", "Item Name", "Quantity", "Price"
+				}
+			){
+			/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+			public boolean isCellEditable(int rowIndex, int columnIndex) {
+			    return false;
+			}
+			};
+		table.setModel(listitemmodel);
+		table.getColumnModel().getColumn(0).setPreferredWidth(20);
+		table.getColumnModel().getColumn(1).setPreferredWidth(150);
+		table.getColumnModel().getColumn(2).setPreferredWidth(62);
+		scrollPane.setViewportView(table);
+		contentPane.setLayout(null);
+		
+		JLabel balancedisp = new JLabel("Balance: RM" + priceformatter.format(paymentdata.get(0).getcustpay() - paymentdata.get(0).gettotalprice()));
+		balancedisp.setBounds(10, 629, 598, 15);
+		balancedisp.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		contentPane.add(balancedisp);
+		
+		JLabel custpaiddisplay = new JLabel("Customer paid: RM" + priceformatter.format(paymentdata.get(0).getcustpay()));
+		custpaiddisplay.setBounds(10, 601, 598, 17);
+		custpaiddisplay.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		contentPane.add(custpaiddisplay);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("Total: RM" + priceformatter.format(paymentdata.get(0).gettotalprice()));
 		lblNewLabel_4_1.setBounds(10, 565, 289, 26);
 		lblNewLabel_4_1.setForeground(Color.BLACK);
-		lblNewLabel_4_1.setFont(new Font("SansSerif", Font.BOLD, 18));
+		lblNewLabel_4_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
 		lblNewLabel_4_1.setBackground(Color.WHITE);
+		contentPane.add(lblNewLabel_4_1);
 		
-		JLabel custpaiddisplay = new JLabel("Customer paid: RM" + priceformatter.format(paymentdata.get(0).getcustpay()));
-		custpaiddisplay.setBounds(10, 601, 598, 17);
-		custpaiddisplay.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JLabel lblNewLabel_4_2 = new JLabel("Order Details");
+		lblNewLabel_4_2.setBounds(680, 79, 137, 24);
+		lblNewLabel_4_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_2.setForeground(Color.BLACK);
+		lblNewLabel_4_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblNewLabel_4_2.setBackground(Color.WHITE);
+		contentPane.add(lblNewLabel_4_2);
 		
-		JLabel balancedisp = new JLabel("Balance: RM" + priceformatter.format(paymentdata.get(0).getcustpay() - paymentdata.get(0).gettotalprice()));
-		balancedisp.setBounds(10, 629, 598, 15);
-		balancedisp.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		String addressline = "<html>" + customerdata.get(0).getaddress().replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>";
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 109, 548, 206);
-		panel_1.setOpaque(false);
+		JLabel lblNewLabel_4 = new JLabel("Customer Details");
+		lblNewLabel_4.setBounds(168, 79, 213, 24);
+		lblNewLabel_4.setBackground(Color.WHITE);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblNewLabel_4.setForeground(Color.BLACK);
+		contentPane.add(lblNewLabel_4);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(558, 109, 362, 206);
@@ -89,30 +119,30 @@ public class ReceiptCustomer extends JFrame {
 		
 		JLabel lblNewLabel_1_2_2 = new JLabel("Payment Type:");
 		lblNewLabel_1_2_2.setForeground(Color.BLACK);
-		lblNewLabel_1_2_2.setFont(new Font("SansSerif", Font.PLAIN, 16));
+		lblNewLabel_1_2_2.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Order Date:");
 		lblNewLabel_1_2.setForeground(Color.BLACK);
-		lblNewLabel_1_2.setFont(new Font("SansSerif", Font.PLAIN, 16));
+		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		
 		JLabel orderdatedisplay = new JLabel(orderdata.get(0).getdate() + " " + orderdata.get(0).getordertime());
 		orderdatedisplay.setHorizontalAlignment(SwingConstants.RIGHT);
 		orderdatedisplay.setForeground(Color.BLACK);
-		orderdatedisplay.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		orderdatedisplay.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel lblNewLabel_1_2_1 = new JLabel("Order ID:");
 		lblNewLabel_1_2_1.setForeground(Color.BLACK);
-		lblNewLabel_1_2_1.setFont(new Font("SansSerif", Font.PLAIN, 16));
+		lblNewLabel_1_2_1.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		
 		JLabel orderiddisplay = new JLabel(orderid);
 		orderiddisplay.setHorizontalAlignment(SwingConstants.RIGHT);
 		orderiddisplay.setForeground(Color.BLACK);
-		orderiddisplay.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		orderiddisplay.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel paymenttypedisplay = new JLabel(paymentdata.get(0).getpaymenttype());
 		paymenttypedisplay.setHorizontalAlignment(SwingConstants.RIGHT);
 		paymenttypedisplay.setForeground(Color.BLACK);
-		paymenttypedisplay.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		paymenttypedisplay.setFont(new Font("Tahoma", Font.ITALIC, 14));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -151,130 +181,107 @@ public class ReceiptCustomer extends JFrame {
 					.addContainerGap(80, Short.MAX_VALUE))
 		);
 		panel_2.setLayout(gl_panel_2);
+		contentPane.add(panel_2);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(0, 109, 548, 206);
+		panel_1.setOpaque(false);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Address:");
 		lblNewLabel_2_1.setForeground(Color.BLACK);
-		lblNewLabel_2_1.setFont(new Font("SansSerif", Font.PLAIN, 16));
+		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		JLabel addressdisplay = new JLabel(addressline);
 		addressdisplay.setVerticalAlignment(SwingConstants.TOP);
 		addressdisplay.setForeground(Color.BLACK);
-		addressdisplay.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		addressdisplay.setFont(new Font("Tahoma", Font.ITALIC, 14));
 		
 		JLabel lblNewLabel_2_2 = new JLabel("Gender:");
 		lblNewLabel_2_2.setForeground(Color.BLACK);
-		lblNewLabel_2_2.setFont(new Font("SansSerif", Font.PLAIN, 16));
+		lblNewLabel_2_2.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		
 		JLabel lblGendeDisp = new JLabel(customerdata.get(0).getgender());
 		lblGendeDisp.setForeground(Color.BLACK);
-		lblGendeDisp.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		lblGendeDisp.setFont(new Font("Tahoma", Font.ITALIC, 14));
 		
 				JLabel lblNewLabel_2 = new JLabel("Phone Number:");
 				lblNewLabel_2.setForeground(Color.BLACK);
-				lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 16));
-		
-		JLabel phonenodisplay = new JLabel(customerdata.get(0).getphoneno());
-		phonenodisplay.setForeground(Color.BLACK);
-		phonenodisplay.setFont(new Font("SansSerif", Font.PLAIN, 14));
-		
-				JLabel lblNewLabel_1 = new JLabel("Name:");
-				lblNewLabel_1.setForeground(Color.BLACK);
-				lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 16));
-		
-		JLabel namedisplay = new JLabel(customerdata.get(0).getname());
-		namedisplay.setBackground(new Color(240, 240, 240));
-		namedisplay.setForeground(Color.BLACK);
-		namedisplay.setFont(new Font("SansSerif", Font.PLAIN, 14));
-		
-		JLabel lblNewLabel_2_2_1 = new JLabel("Regular customer:");
-		lblNewLabel_2_2_1.setForeground(Color.BLACK);
-		lblNewLabel_2_2_1.setFont(new Font("SansSerif", Font.PLAIN, 16));
-		
-		String regularcuststate = "No";
-		if(customerdata.get(0).getregularcustomer()) {
-			regularcuststate = "Yes";
-		}
-		
-		JLabel displayregularcust = new JLabel(regularcuststate);
-		displayregularcust.setForeground(Color.BLACK);
-		displayregularcust.setFont(new Font("SansSerif", Font.PLAIN, 14));
-		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
-							.addComponent(lblNewLabel_2_1, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(addressdisplay, GroupLayout.PREFERRED_SIZE, 455, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(lblNewLabel_2_2)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblGendeDisp, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(lblNewLabel_2)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(phonenodisplay, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(lblNewLabel_1)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(namedisplay, GroupLayout.PREFERRED_SIZE, 333, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(lblNewLabel_2_2_1, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(displayregularcust, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
-		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(12)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_1)
-						.addComponent(namedisplay))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_2)
-						.addComponent(phonenodisplay))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_2_2)
-						.addComponent(lblGendeDisp, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(addressdisplay, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2_1))
-					.addPreferredGap(ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblNewLabel_2_2_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-						.addComponent(displayregularcust, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		panel_1.setLayout(gl_panel_1);
-		
-		table = new JTable();
-		DefaultTableModel listitemmodel = new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-					"Item Number", "Item Name", "Quantity", "Price"
-				}
-			){
-			/**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
-
-			public boolean isCellEditable(int rowIndex, int columnIndex) {
-			    return false;
-			}
-			};
-		table.setModel(listitemmodel);
-		table.getColumnModel().getColumn(0).setPreferredWidth(20);
-		table.getColumnModel().getColumn(1).setPreferredWidth(150);
-		table.getColumnModel().getColumn(2).setPreferredWidth(62);
-		scrollPane.setViewportView(table);
-		contentPane.setLayout(null);
+				lblNewLabel_2.setFont(new Font("Tahoma", Font.ITALIC, 16));
+				
+				JLabel phonenodisplay = new JLabel(customerdata.get(0).getphoneno());
+				phonenodisplay.setForeground(Color.BLACK);
+				phonenodisplay.setFont(new Font("Tahoma", Font.ITALIC, 14));
+				
+						JLabel lblNewLabel_1 = new JLabel("Name:");
+						lblNewLabel_1.setForeground(Color.BLACK);
+						lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 16));
+						
+						JLabel namedisplay = new JLabel(customerdata.get(0).getname());
+						namedisplay.setBackground(new Color(240, 240, 240));
+						namedisplay.setForeground(Color.BLACK);
+						namedisplay.setFont(new Font("Tahoma", Font.ITALIC, 14));
+						
+						JLabel lblNewLabel_2_2_1 = new JLabel("Regular customer:");
+						lblNewLabel_2_2_1.setForeground(Color.BLACK);
+						lblNewLabel_2_2_1.setFont(new Font("Tahoma", Font.ITALIC, 16));
+						
+						JLabel displayregularcust = new JLabel(regularcuststate);
+						displayregularcust.setForeground(Color.BLACK);
+						displayregularcust.setFont(new Font("Tahoma", Font.ITALIC, 14));
+						GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+						gl_panel_1.setHorizontalGroup(
+							gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addContainerGap()
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+										.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+											.addComponent(lblNewLabel_2_1, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(addressdisplay, GroupLayout.PREFERRED_SIZE, 455, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_panel_1.createSequentialGroup()
+											.addComponent(lblNewLabel_2_2)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(lblGendeDisp, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_panel_1.createSequentialGroup()
+											.addComponent(lblNewLabel_2)
+											.addPreferredGap(ComponentPlacement.UNRELATED)
+											.addComponent(phonenodisplay, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_panel_1.createSequentialGroup()
+											.addComponent(lblNewLabel_1)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(namedisplay, GroupLayout.PREFERRED_SIZE, 333, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_panel_1.createSequentialGroup()
+											.addComponent(lblNewLabel_2_2_1, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(displayregularcust, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE)))
+									.addContainerGap())
+						);
+						gl_panel_1.setVerticalGroup(
+							gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addGap(12)
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+										.addComponent(lblNewLabel_1)
+										.addComponent(namedisplay))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+										.addComponent(lblNewLabel_2)
+										.addComponent(phonenodisplay))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+										.addComponent(lblNewLabel_2_2)
+										.addComponent(lblGendeDisp, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+										.addComponent(addressdisplay, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblNewLabel_2_1))
+									.addPreferredGap(ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+										.addComponent(lblNewLabel_2_2_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+										.addComponent(displayregularcust, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+									.addContainerGap())
+						);
+						panel_1.setLayout(gl_panel_1);
+						contentPane.add(panel_1);
 
 		JLabel lblNewLabel = new JLabel("Receipt for Order ID " + orderid);
 		lblNewLabel.setBackground(new Color(255, 255, 255));
@@ -298,14 +305,15 @@ public class ReceiptCustomer extends JFrame {
 		);
 		panel.setLayout(gl_panel);
 		contentPane.add(panel);
-		contentPane.add(lblNewLabel_4);
-		contentPane.add(lblNewLabel_4_2);
-		contentPane.add(panel_1);
-		contentPane.add(panel_2);
-		contentPane.add(lblNewLabel_4_1);
 		contentPane.add(scrollPane);
-		contentPane.add(custpaiddisplay);
-		contentPane.add(balancedisp);
+		
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		scrollPane.setColumnHeaderView(lblNewLabel_3);
+		
+		JLabel lblNewLabel_5 = new JLabel("New label");
+		lblNewLabel_5.setIcon(new ImageIcon(ReceiptCustomer.class.getResource("/main/logo/background.png")));
+		lblNewLabel_5.setBounds(0, 63, 942, 637);
+		contentPane.add(lblNewLabel_5);
 		
 		listitemmodel.setRowCount(0);
 		for(int i = 0; i < itemsdata.size(); i++) {	

@@ -60,13 +60,14 @@ public class PaymentMain extends JFrame {
 		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 830, 68);
 		panel.setBorder(null);
-		panel.setBackground(new Color(255, 204, 153));
+		panel.setBackground(Color.WHITE);
 		
 		JLabel lblPayment = new JLabel("Order");
 		lblPayment.setIcon(new ImageIcon(PaymentMain.class.getResource("/main/logo/mobile-payment.png")));
 		lblPayment.setForeground(new Color(0, 0, 0));
-		lblPayment.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
+		lblPayment.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -86,61 +87,12 @@ public class PaymentMain extends JFrame {
 		);
 		panel.setLayout(gl_panel);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 204, 153));
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(255, 204, 153));
-		
-		JPanel panel_2_1 = new JPanel();
-		panel_2_1.setBackground(new Color(255, 204, 153));
-		
-		JLabel lblNewLabel_1_1 = new JLabel("Amount pay (RM)");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		custpayfield = new JTextField();
-		custpayfield.setFont(new Font("SansSerif", Font.PLAIN, 16));
-		custpayfield.setColumns(10);
-		GroupLayout gl_panel_2_1 = new GroupLayout(panel_2_1);
-		gl_panel_2_1.setHorizontalGroup(
-			gl_panel_2_1.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2_1.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel_2_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(custpayfield, GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-						.addComponent(lblNewLabel_1_1, GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE))
-					.addContainerGap())
-		);
-		gl_panel_2_1.setVerticalGroup(
-			gl_panel_2_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2_1.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel_1_1)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(custpayfield, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-					.addContainerGap())
-		);
-		panel_2_1.setLayout(gl_panel_2_1);
-		
-		
-		JRadioButton creditcardtype = new JRadioButton("Credit Card");
-		creditcardtype.setBackground(new Color(200, 213, 185));
-		JRadioButton cashtype = new JRadioButton("Cash");
-		cashtype.setBackground(new Color(200, 213, 185));
-		JRadioButton debittype = new JRadioButton("Debit");
-		debittype.setBackground(new Color(200, 213, 185));
-		
-		cashtype.setActionCommand("Cash");
-		debittype.setActionCommand("Debit");
-		creditcardtype.setActionCommand("Credit Card");
-		
 		ButtonGroup paymenttypeselector = new ButtonGroup();
-		paymenttypeselector.add(cashtype);
-		paymenttypeselector.add(debittype);
-		paymenttypeselector.add(creditcardtype);
+		contentPane.setLayout(null);
 		
 		
 		JButton btnNewButton = new JButton("Pay");
+		btnNewButton.setBounds(599, 370, 164, 39);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -211,66 +163,64 @@ public class PaymentMain extends JFrame {
 			}
 		});
 		btnNewButton.setBackground(new Color(111, 255, 233));
-		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 16));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(68, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel_1, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE))
-					.addGap(45)
-					.addComponent(panel_2_1, GroupLayout.PREFERRED_SIZE, 347, GroupLayout.PREFERRED_SIZE)
-					.addGap(53))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(599, Short.MAX_VALUE)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
-					.addGap(67))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel_2_1, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-					.addGap(33))
-		);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
+		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel_1 = new JLabel("amount");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JPanel panel_2_1 = new JPanel();
+		panel_2_1.setForeground(Color.WHITE);
+		panel_2_1.setBounds(416, 79, 347, 83);
+		panel_2_1.setBackground(Color.WHITE);
 		
-		JLabel pricedisplay = new JLabel("RM " + priceformatter.format(payment));
-		pricedisplay.setFont(new Font("SansSerif", Font.PLAIN, 18));
-		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel_2.createSequentialGroup()
+		JLabel lblNewLabel_1_1 = new JLabel("Amount pay (RM)");
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		
+		custpayfield = new JTextField();
+		custpayfield.setFont(new Font("SansSerif", Font.PLAIN, 16));
+		custpayfield.setColumns(10);
+		GroupLayout gl_panel_2_1 = new GroupLayout(panel_2_1);
+		gl_panel_2_1.setHorizontalGroup(
+			gl_panel_2_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_2_1.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-						.addComponent(pricedisplay, GroupLayout.PREFERRED_SIZE, 356, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_panel_2_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_1_1, GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+						.addComponent(custpayfield, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE))
 					.addContainerGap())
 		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
+		gl_panel_2_1.setVerticalGroup(
+			gl_panel_2_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2_1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblNewLabel_1)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(pricedisplay, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addComponent(lblNewLabel_1_1)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(custpayfield, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+					.addContainerGap())
 		);
-		panel_2.setLayout(gl_panel_2);
+		panel_2_1.setLayout(gl_panel_2_1);
+		contentPane.add(panel_2_1);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setForeground(Color.WHITE);
+		panel_1.setBounds(215, 173, 317, 121);
+		panel_1.setBackground(Color.WHITE);
+		
+		
+		JRadioButton creditcardtype = new JRadioButton("Credit Card");
+		creditcardtype.setBackground(new Color(200, 213, 185));
+		JRadioButton cashtype = new JRadioButton("Cash");
+		cashtype.setBackground(new Color(200, 213, 185));
+		JRadioButton debittype = new JRadioButton("Debit");
+		debittype.setBackground(new Color(200, 213, 185));
+		
+		cashtype.setActionCommand("Cash");
+		debittype.setActionCommand("Debit");
+		creditcardtype.setActionCommand("Credit Card");
+		paymenttypeselector.add(cashtype);
+		paymenttypeselector.add(debittype);
+		paymenttypeselector.add(creditcardtype);
 		
 		JLabel lblNewLabel = new JLabel("Choose Payment Type");
+		lblNewLabel.setFont(new Font("Tahoma", Font.ITALIC, 13));
 		
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
@@ -298,6 +248,44 @@ public class PaymentMain extends JFrame {
 					.addContainerGap(59, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
-		contentPane.setLayout(gl_contentPane);
+		contentPane.add(panel_1);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setForeground(Color.WHITE);
+		panel_2.setBounds(68, 79, 317, 83);
+		panel_2.setBackground(Color.WHITE);
+		
+		JLabel lblNewLabel_1 = new JLabel("amount");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		
+		JLabel pricedisplay = new JLabel("RM " + priceformatter.format(payment));
+		pricedisplay.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+						.addComponent(pricedisplay, GroupLayout.PREFERRED_SIZE, 356, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel_1)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(pricedisplay, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel_2.setLayout(gl_panel_2);
+		contentPane.add(panel_2);
+		contentPane.add(panel);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon(PaymentMain.class.getResource("/main/logo/background.png")));
+		lblNewLabel_2.setBounds(0, 65, 830, 377);
+		contentPane.add(lblNewLabel_2);
 	}
 }
