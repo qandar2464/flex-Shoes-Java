@@ -51,11 +51,11 @@ public class Main {
 
 			welcomeframe.setVisible(true);
 			Thread.sleep(2000);
-			welcomeframe.progressBar.setVisible(true);
+			
 			try {
 				for (int i = 0; i <= 100; i += 4) {
 					Thread.sleep(20);
-					welcomeframe.progressBar.setValue(i);
+					
 					welcomeframe.lblNewLabel_3.setText("Welcome! Starting up " + i + "%");
 				}
 				Thread.sleep(1000);

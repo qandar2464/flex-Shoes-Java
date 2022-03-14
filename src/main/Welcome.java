@@ -14,9 +14,7 @@ import javax.swing.JProgressBar;
 public class Welcome extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-
-	JProgressBar progressBar = new JProgressBar();
-	JLabel lblNewLabel_3 = new JLabel("Welcome! Starting up...");
+	JLabel lblNewLabel_3 = new JLabel("Loading");
 	public Welcome() {
 		setUndecorated(true);
 		setResizable(false);
@@ -27,42 +25,10 @@ public class Welcome extends JFrame {
 		getContentPane().setLayout(null);
 		setIconImage(new ImageIcon(this.getClass().getResource("/main/logo/logo.png")).getImage());
 
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(204, 204, 153));
-		panel.setBounds(0, 260, 766, 127);
-		getContentPane().add(panel);
-		
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_3.setForeground(Color.BLACK);
-
-		
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(31)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_3)
-						.addComponent(progressBar, GroupLayout.PREFERRED_SIZE, 697, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(38, Short.MAX_VALUE))
-		);
-		progressBar.setVisible(false);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(15, Short.MAX_VALUE)
-					.addComponent(lblNewLabel_3)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(32))
-		);
-		progressBar.setForeground(new Color(51, 0, 153));
-		panel.setLayout(gl_panel);
-
 		JPanel panel_1 = new JPanel();
 		panel_1.setForeground(Color.BLACK);
 		panel_1.setBackground(new Color(255, 204, 153));
-		panel_1.setBounds(0, 0, 766, 260);
+		panel_1.setBounds(0, 0, 766, 387);
 		getContentPane().add(panel_1);
 
 		JLabel lblNewLabel_1 = new JLabel("");
@@ -76,29 +42,38 @@ public class Welcome extends JFrame {
 		JLabel lblNewLabel = new JLabel("By: " + Main.getcontributor());
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setFont(new Font("Calibri Light", Font.PLAIN, 17));
+		
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_3.setForeground(Color.BLACK);
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.TRAILING)
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(140)
-					.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(lblNewLabel_2, GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
-					.addGap(19))
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 509, GroupLayout.PREFERRED_SIZE))
 				.addGroup(gl_panel_1.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 509, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(247, Short.MAX_VALUE))
+					.addGap(158)
+					.addComponent(lblNewLabel_1)
+					.addGap(10)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 518, GroupLayout.PREFERRED_SIZE)))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
-					.addGap(98)
+					.addGap(21)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+					.addGap(63)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_1))
-					.addPreferredGap(ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGap(13)
+							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)))
+					.addGap(103))
 		);
 		panel_1.setLayout(gl_panel_1);
 	}

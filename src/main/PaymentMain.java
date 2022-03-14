@@ -55,17 +55,17 @@ public class PaymentMain extends JFrame {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 844, 479);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(51, 102, 102));
+		contentPane.setBackground(new Color(204, 153, 153));
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(null);
-		panel.setBackground(new Color(102, 102, 51));
+		panel.setBackground(new Color(255, 204, 153));
 		
 		JLabel lblPayment = new JLabel("Order");
 		lblPayment.setIcon(new ImageIcon(PaymentMain.class.getResource("/main/logo/mobile-payment.png")));
-		lblPayment.setForeground(Color.WHITE);
+		lblPayment.setForeground(new Color(0, 0, 0));
 		lblPayment.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -87,13 +87,13 @@ public class PaymentMain extends JFrame {
 		panel.setLayout(gl_panel);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(250, 243, 221));
+		panel_1.setBackground(new Color(255, 204, 153));
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(240, 243, 189));
+		panel_2.setBackground(new Color(255, 204, 153));
 		
 		JPanel panel_2_1 = new JPanel();
-		panel_2_1.setBackground(new Color(240, 243, 189));
+		panel_2_1.setBackground(new Color(255, 204, 153));
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Amount pay (RM)");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -217,21 +217,17 @@ public class PaymentMain extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(68, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 717, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-									.addGap(68)
-									.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addContainerGap(68, Short.MAX_VALUE)
-									.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE)))
-							.addGap(45)
-							.addComponent(panel_2_1, GroupLayout.PREFERRED_SIZE, 347, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(panel_1, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE))
+					.addGap(45)
+					.addComponent(panel_2_1, GroupLayout.PREFERRED_SIZE, 347, GroupLayout.PREFERRED_SIZE)
 					.addGap(53))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(599, Short.MAX_VALUE)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+					.addGap(67))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -242,10 +238,10 @@ public class PaymentMain extends JFrame {
 						.addComponent(panel_2_1, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
 						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addGap(65)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(82, Short.MAX_VALUE))
+					.addGap(33))
 		);
 		
 		JLabel lblNewLabel_1 = new JLabel("amount");
@@ -282,14 +278,11 @@ public class PaymentMain extends JFrame {
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(creditcardtype)
+						.addComponent(debittype)
 						.addComponent(lblNewLabel)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(cashtype)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(debittype)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(creditcardtype)))
-					.addContainerGap(527, Short.MAX_VALUE))
+						.addComponent(cashtype))
+					.addContainerGap(198, Short.MAX_VALUE))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -297,11 +290,12 @@ public class PaymentMain extends JFrame {
 					.addContainerGap()
 					.addComponent(lblNewLabel)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(cashtype)
-						.addComponent(debittype)
-						.addComponent(creditcardtype))
-					.addContainerGap(12, Short.MAX_VALUE))
+					.addComponent(cashtype)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(debittype)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(creditcardtype)
+					.addContainerGap(59, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
 		contentPane.setLayout(gl_contentPane);

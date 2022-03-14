@@ -195,7 +195,7 @@ public class CashierMain extends JFrame {
 		mntmNewMenuItem_2.setIcon(new ImageIcon(CashierMain.class.getResource("/main/logo/about.png")));
 		mnNewMenu_1.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(102, 102, 51));
+		contentPane.setBackground(new Color(255, 204, 153));
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 
@@ -204,7 +204,7 @@ public class CashierMain extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("Order");
 		lblNewLabel.setIcon(new ImageIcon(CashierMain.class.getResource("/main/logo/ordericon.png")));
-		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 24));
 
 		btnNewButton = new JButton("Order");
@@ -214,7 +214,7 @@ public class CashierMain extends JFrame {
 		});
 		btnNewButton.setIcon(new ImageIcon(CashierMain.class.getResource("/main/logo/add.png")));
 		btnNewButton.setFocusable(false);
-		btnNewButton.setBackground(new Color(218, 98, 125));
+		btnNewButton.setBackground(new Color(255, 0, 51));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -258,25 +258,24 @@ public class CashierMain extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(42, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addComponent(lblNewLabel)
-							.addGap(800))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 855, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE))
-							.addGap(68))))
+					.addGap(367)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 230, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(382, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(66)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 834, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(79, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblNewLabel)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
+					.addGap(30)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(19, Short.MAX_VALUE))
 		);

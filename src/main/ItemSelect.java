@@ -57,15 +57,17 @@ public class ItemSelect extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 783, 539);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(51, 102, 102));
+		contentPane.setBackground(new Color(204, 153, 153));
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(102, 102, 51));
+		panel.setBounds(0, 0, 772, 73);
+		panel.setBackground(new Color(255, 204, 153));
 
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(70, 194, 626, 228);
 
 		// read file from item
 		BufferedReader itemlistinput = null;
@@ -75,10 +77,10 @@ public class ItemSelect extends JFrame {
 		
 		try {
 			itemlistinput = new BufferedReader(new FileReader("items.txt"));
-			String bakeryitemline = null;
+			String shoesitem = null;
 			itemlist.add("Select Item");
-			while ((bakeryitemline = itemlistinput.readLine()) != null) {
-				String[] listitemcomma = bakeryitemline.split(",");
+			while ((shoesitem = itemlistinput.readLine()) != null) {
+				String[] listitemcomma = shoesitem.split(",");
 				itemlist.add(listitemcomma[0] + " RM"+ listitemcomma[1]);
 				itemlistname.add(listitemcomma[0]);
 				priceperitem.add(Double.parseDouble(listitemcomma[1]));
@@ -95,12 +97,16 @@ public class ItemSelect extends JFrame {
 		Double[] priceperitemArray = priceperitem.toArray(new Double[] {});
 		
 		JComboBox itemcombobox = new JComboBox(itemlistArray);
+		itemcombobox.setForeground(new Color(0, 0, 0));
+		itemcombobox.setBounds(48, 102, 196, 22);
 
 		JSpinner quantity = new JSpinner();
+		quantity.setBounds(60, 163, 32, 20);
 		quantity.setModel(new SpinnerNumberModel(1, 1, null, 1));
 		
 
-		JButton btnNewButton = new JButton("Add");
+		JButton btnNewButton = new JButton("+");
+		btnNewButton.setBounds(266, 102, 51, 23);
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			int lastitemnumber = 1;
 			@Override
@@ -137,12 +143,15 @@ public class ItemSelect extends JFrame {
 		});
 		
 		JLabel lblNewLabel = new JLabel("Items");
+		lblNewLabel.setBounds(48, 84, 55, 17);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel lblNewLabel_1 = new JLabel("Quantity");
+		lblNewLabel_1.setBounds(50, 135, 53, 17);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnNewButton_1 = new JButton("Save");
+		btnNewButton_1.setBounds(629, 457, 103, 34);
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -151,12 +160,15 @@ public class ItemSelect extends JFrame {
 		});
 		
 		deletenumberfield = new JTextField();
+		deletenumberfield.setBounds(420, 105, 103, 20);
 		deletenumberfield.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Item Number");
+		lblNewLabel_3.setBounds(420, 85, 84, 17);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnNewButton_2 = new JButton("Delete");
+		btnNewButton_2.setBounds(536, 102, 65, 23);
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -175,69 +187,8 @@ public class ItemSelect extends JFrame {
 		});
 		
 		totalpricedisplay = new JLabel("Total Price: RM 0");
+		totalpricedisplay.setBounds(599, 433, 133, 19);
 		totalpricedisplay.setFont(new Font("Tahoma", Font.BOLD, 15));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_1))
-					.addGap(8)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(quantity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(itemcombobox, 0, 196, Short.MAX_VALUE))
-					.addGap(18)
-					.addComponent(btnNewButton)
-					.addGap(82)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblNewLabel_3)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(deletenumberfield, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnNewButton_2))
-						.addComponent(totalpricedisplay))
-					.addGap(90))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(164)
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 421, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(187, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(49)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 654, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(69, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(itemcombobox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel)
-								.addComponent(btnNewButton))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(quantity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel_1)))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblNewLabel_3)
-								.addComponent(deletenumberfield, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnNewButton_2))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(totalpricedisplay)))
-					.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-					.addGap(26))
-		);
 
 		table = new JTable();
 		listitemmodel = new DefaultTableModel(
@@ -263,11 +214,12 @@ public class ItemSelect extends JFrame {
 		table.getColumnModel().getColumn(1).setPreferredWidth(150);
 		table.getColumnModel().getColumn(2).setPreferredWidth(62);
 		scrollPane.setViewportView(table);
+		contentPane.setLayout(null);
 
-		JLabel lblNewLabel_2 = new JLabel("Total order ID: <dynamic>");
+		JLabel lblNewLabel_2 = new JLabel("Total order ID: "+orderid );
 
 		lblNewLabel_2.setIcon(new ImageIcon(ItemSelect.class.getResource("/main/logo/contract.png")));
-		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setForeground(new Color(0, 0, 0));
 		lblNewLabel_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 17));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING)
@@ -277,7 +229,18 @@ public class ItemSelect extends JFrame {
 		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(Alignment.TRAILING, gl_panel
 				.createSequentialGroup().addContainerGap(21, Short.MAX_VALUE).addComponent(lblNewLabel_2).addGap(20)));
 		panel.setLayout(gl_panel);
-		contentPane.setLayout(gl_contentPane);
+		contentPane.add(panel);
+		contentPane.add(lblNewLabel);
+		contentPane.add(quantity);
+		contentPane.add(itemcombobox);
+		contentPane.add(btnNewButton);
+		contentPane.add(lblNewLabel_1);
+		contentPane.add(lblNewLabel_3);
+		contentPane.add(deletenumberfield);
+		contentPane.add(btnNewButton_2);
+		contentPane.add(totalpricedisplay);
+		contentPane.add(btnNewButton_1);
+		contentPane.add(scrollPane);
 		
 		showdata();
 	}
@@ -294,7 +257,7 @@ public class ItemSelect extends JFrame {
 	}
 	
 	private void showdata() {
-		//ADD DATA HERE
+		//add data
 		listitemmodel.setRowCount(0);
 		for(int i = 0; i < Main.getitems().size(); i++) {
 			if(String.valueOf(Main.getitems().get(i).getorderid()).equals(orderid)) {				
