@@ -111,9 +111,7 @@ public class ItemSelect extends JFrame {
 					"Item Number", "Item Name", "Quantity", "Price"
 				}
 			){
-			/**
-				 * 
-				 */
+			
 				private static final long serialVersionUID = 1L;
 
 			public boolean isCellEditable(int rowIndex, int columnIndex) {

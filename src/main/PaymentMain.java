@@ -101,10 +101,10 @@ public class PaymentMain extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				// PROCESS STATE
+				// state process
 				boolean process = false;
 				
-				// ERROR STATE
+				// state error
 				boolean custpayvalueerror = false;
 				boolean paymenttypeerror = false;
 				boolean insufficientbalance = false;
